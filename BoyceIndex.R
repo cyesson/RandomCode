@@ -1,7 +1,18 @@
-# function to calculate Boyce index
-# pred = predictions (i.e. 0-1 values from habitat suitability scores)
-# res = result = present or absent/background
-# bins = number of score bins to use in calculation
+#' Calculate the Boyce index
+#' @description Calculate the Boyce Index for evaluation of species distribution models
+#' @param pred predictions vector (i.e. 0-1 values from habitat suitability scores) 
+#' @param res presence or absence/background observations paired with predictions vector 
+#' @param bins number of score bins to use in calculation (default 10)
+#' @param bin.method options percentile (default) or equal
+#' @param range options observed (default) or expected
+#' @details  Calculate the Boyce Index for evaluation of species distribution models
+#' @return A list containing the following elements 
+#'  all input parameters 
+#'  TotalPresences
+#'  TotalBackground
+#'  bins a data frame with columns bins, observed.n, expected.n, observed.p, expected.p (n=number, p=percentage), Observed/Expected
+#'  BoyceIndex the Boyce index
+# 
 
 BoyceIndex <- function(pred, res, bins=10, bin.method="percentile", range="observed")
 {
